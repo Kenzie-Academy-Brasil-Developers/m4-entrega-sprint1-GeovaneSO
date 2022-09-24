@@ -7,19 +7,19 @@ const verifyAdminMiddleware = (req, res, next) => {
 
     if(!userAdm.isAdm) return res.status(401).json({message: "Missing Authorization Token."});
    
-    jwt.verify(userAdm, process.env.SECRET_KEY, (error, decoded) => {
-        if(error){
-            return response.status(401).json({
-                message: 'Unauthorized'
-            })
-        }
+    // jwt.verify(userAdm, process.env.SECRET_KEY, (error, decoded) => {
+    //     if(error){
+    //         return response.status(401).json({
+    //             message: 'Unauthorized'
+    //         })
+    //     }
 
-        request.user = {
-            uuid: decoded.sub
+    //     request.user = {
+    //         uuid: decoded.sub
 
-        }
+    //     }
         next();
-    })
+    // })
 }
 
 export default verifyAdminMiddleware;

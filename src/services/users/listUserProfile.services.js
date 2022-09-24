@@ -1,13 +1,20 @@
 import users from '../../database';
 
 const listUserProfileService = (uuid) => {
-    const id = req.decoded.sub;
+    if(uuid){
+        const userProfile = users.filter((user) => user.uuid === uuid);
+        const {name, uuid, isAdm, createdOn, updatedOn, email} = userProfile[0]
 
-    if(id){
-        const userProfile = users.filter((user) => user.uuid === id);
-
-        return userProfile[0]
+        return {
+            name: name, 
+            uuid: uuid, 
+            isAdm: isAdm, 
+            createdOn: createdOn, 
+            updatedOn: updatedOn, 
+            email: email
+        }
     }
+    throw new Error('User not found');
 }
 
 export default listUserProfileService;

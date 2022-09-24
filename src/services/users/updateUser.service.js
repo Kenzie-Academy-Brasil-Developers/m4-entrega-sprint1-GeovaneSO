@@ -26,10 +26,10 @@ const updateUserService = (uuid, user) => {
         users[userAdmIndex] = {...users[userAdmIndex], ...userAdmUpdated};
 
         return {
-            uuid: users[userAdmIndex].uuid, 
-            name: users[userAdmIndex].name, 
-            email: users[userAdmIndex].email, 
-            isAdm: users[userAdmIndex].isAdm,
+            uuid: userAdmUpdated.uuid, 
+            name: userAdmUpdated.name, 
+            email: userAdmUpdated.email, 
+            isAdm: userAdmUpdated.isAdm,
             createdOn: new Date,
             updatedOn: new Date()
         };
@@ -55,10 +55,10 @@ const updateUserService = (uuid, user) => {
         users[userNotAdmIndex] = {...users[userNotAdmIndex], ...userNotAdmUpdated};
 
         return {
-            uuid: users[userNotAdmIndex].uuid, 
-            name: users[userNotAdmIndex].name, 
+            uuid: userNotAdmUpdated.uuid, 
+            name: userNotAdmUpdated.name, 
             email: users[userNotAdmIndex].email, 
-            isAdm: users[userNotAdmIndex].isAdm,
+            isAdm: userNotAdmUpdated.isAdm,
             createdOn: new Date(),
             updatedOn: new Date()
         };
