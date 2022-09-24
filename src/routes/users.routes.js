@@ -9,8 +9,8 @@ const router = Router();
 
 router.post('', verifyEmailAvailabilityMiddleware, createUserController);
 router.get('', verifyAuthTokenMiddleware, listUsersController);
-router.get('/profile', verifyAuthTokenMiddleware, listUserProfileController);
+router.get('/profile', verifyAuthTokenMiddleware, verifyAdminMiddleware, listUserProfileController);
 router.patch('/:uuid', verifyAuthTokenMiddleware, verifyUuidMiddleware, verifyAdminMiddleware, updateUserController);
-router.delete('/:uuid', verifyAuthTokenMiddleware, verifyUuidMiddleware, deleteUserController);
+router.delete('/:uuid', verifyAuthTokenMiddleware, verifyUuidMiddleware, verifyAdminMiddleware, deleteUserController);
 
 export default router;

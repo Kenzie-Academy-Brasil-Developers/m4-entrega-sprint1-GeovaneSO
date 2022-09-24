@@ -9,5 +9,4 @@ const verifyEmailAvailabilityMiddleware = (req, res, next) => {
 
     next();
 }
-
 export default verifyEmailAvailabilityMiddleware;

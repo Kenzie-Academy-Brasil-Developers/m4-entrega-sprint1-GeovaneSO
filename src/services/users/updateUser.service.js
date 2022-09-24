@@ -1,27 +1,27 @@
 import { createTestScheduler } from 'jest';
 import users from '../../database';
 
-const updateUserService = (uuid, user) => {
-    const {email, name, password, isAdm} = user;
+const updateUserService = (id, isAdm, user) => {
+    const {email, name} = user;
 
     if(isAdm){
-        const userAdm = users.find((user) => user.uuid === uuid);
+        const userAdm = users.find((user) => user.uuid === id);
 
-        const userAdmIndex = users.findIndex(user => user.uuid == uuid);
+        const userAdmIndex = users.findIndex(user => user.uuid == id);
         
         const userAdmUpdated = {
-            uuid, 
-            email, 
-            name, 
+            uuid: userAdm.uuid, 
+            email: email, 
+            name: name, 
             password: userAdm.password, 
-            isAdm: userAdm.isAdm, 
-            createdOn: new Date, 
+            isAdm: isAdm,
+            createdOn: new Date(), 
             updatedOn: new Date()
-        }
+        };
         
         if(userAdmIndex === -1){
             throw new Error('User not found');
-        }
+        };
         
         users[userAdmIndex] = {...users[userAdmIndex], ...userAdmUpdated};
 
@@ -30,21 +30,21 @@ const updateUserService = (uuid, user) => {
             name: userAdmUpdated.name, 
             email: userAdmUpdated.email, 
             isAdm: userAdmUpdated.isAdm,
-            createdOn: new Date,
+            createdOn: new Date(),
             updatedOn: new Date()
         };
     } else {
-        const userNotAdm = users.find((user) => user.uuid === uuid);
+        const userNotAdm = users.find((user) => user.uuid === id);
         
-        const userNotAdmIndex = users.findIndex(user => user.uuid === uuid);
+        const userNotAdmIndex = users.findIndex(user => user.uuid === id);
         
         const userNotAdmUpdated = {
-            uuid,
-            email,
-            name,
+            uuid: userNotAdm.uuid,
+            email: email,
+            name: name,
             password: userNotAdm.password,
-            isAdm: userNotAdm.isAdm,
-            createdOn: new Date, 
+            isAdm: isAdm,
+            createdOn: new Date(), 
             updatedOn: new Date()
         };
         
@@ -57,7 +57,7 @@ const updateUserService = (uuid, user) => {
         return {
             uuid: userNotAdmUpdated.uuid, 
             name: userNotAdmUpdated.name, 
-            email: users[userNotAdmIndex].email, 
+            email: userNotAdmUpdated.email, 
             isAdm: userNotAdmUpdated.isAdm,
             createdOn: new Date(),
             updatedOn: new Date()
