@@ -17,7 +17,7 @@ const createUserController = async (req, res) => {
 
 const updateUserController = (req, res) => {
     try {
-        const uuid = req.params.uuid;
+        const uuid = req.user.sub;
 
         const user = req.body;
 
@@ -33,8 +33,10 @@ const updateUserController = (req, res) => {
 
 const listUsersController = (req, res) => {
     try{    
-        const users = listUsersService();
-    
+        const isAdm = req.user.isAdm;
+
+        const users = listUsersService(isAdm);
+        
         return res.status(200).json(users);
 
     } catch(error){
@@ -44,10 +46,13 @@ const listUsersController = (req, res) => {
 
 const listUserProfileController = (req, res) => {
     try{
-        const uuid = req.params.uuid;
+        const uuid = req.user.sub;
+
+        const isAdm = req.user.isAdm;
+        console.log(isAdm)
     
-        const userProfile = listUserProfileService(uuid);
-    
+        const userProfile = listUserProfileService(uuid, isAdm);
+
         return res.status(200).json(userProfile);
 
     } catch(error){

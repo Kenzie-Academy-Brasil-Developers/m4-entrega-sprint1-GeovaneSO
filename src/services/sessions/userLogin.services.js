@@ -14,10 +14,17 @@ const userLoginService = async (user) => {
 
     if(!passwordMatch) {throw new Error('Invalid email or password')};
 
-    const token = jwt.sign({email: email, 
-        password: password, 
-        uuid: userFind.uuid, 
-        isAdm: userFind.isAdm}, '' + process.env.SECRET_KEY, {expiresIn: '24h', subject: userFind.uuid});
+    const token = jwt.sign(
+        {
+            email: email, 
+            password: password, 
+            isAdm: userFind.isAdm
+        }, 
+        '' + process.env.SECRET_KEY,
+        {
+            expiresIn: '24h', 
+            subject: userFind.uuid
+        });
 
     const userLogin = {
         token, userFind

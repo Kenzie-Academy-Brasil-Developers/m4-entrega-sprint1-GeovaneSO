@@ -2,6 +2,7 @@ import userLoginService from "../services/sessions/userLogin.services";
 
 const createSessionController = async (req, res) => {
     try{
+                    
         const user = req.body;
 
         const userLogin = await userLoginService(user);
