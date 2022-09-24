@@ -16,7 +16,7 @@ const verifyAdminMiddleware = (req, res, next) => {
 
         request.user = {
             uuid: decoded.sub
-            
+
         }
         next();
     })

@@ -37,7 +37,6 @@ const listUsersController = (req, res) => {
     
         return res.status(200).json(users);
 
-
     } catch(error){
         return res.status(401).json({message: error.message});
     }
@@ -45,9 +44,9 @@ const listUsersController = (req, res) => {
 
 const listUserProfileController = (req, res) => {
     try{
-        const id = req.params.id;
+        const uuid = req.params.uuid;
     
-        const userProfile = listUserProfileService(id);
+        const userProfile = listUserProfileService(uuid);
     
         return res.status(200).json(userProfile);
 
@@ -57,9 +56,9 @@ const listUserProfileController = (req, res) => {
 }
 
 const deleteUserController = (req, res) => {
-    const {id} = req.params;
+    const {uuid} = req.params;
 
-    const deleteUser = deleteUserService(id);
+    const deleteUser = deleteUserService(uuid);
 
     return res.status(200).json(deleteUser);
 }

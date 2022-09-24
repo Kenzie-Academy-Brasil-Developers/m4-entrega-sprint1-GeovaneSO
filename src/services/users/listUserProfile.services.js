@@ -1,9 +1,11 @@
 import users from '../../database';
 
 const listUserProfileService = (uuid) => {
-    if(uuid){
-        const userProfile = users.filter((user) => user.uuid === uuid);
-        console.log(uuid)
+    const id = req.decoded.sub;
+
+    if(id){
+        const userProfile = users.filter((user) => user.uuid === id);
+
         return userProfile[0]
     }
 }

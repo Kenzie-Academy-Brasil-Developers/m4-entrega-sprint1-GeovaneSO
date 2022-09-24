@@ -2,7 +2,7 @@ import { Router } from "express";
 import { createUserController, deleteUserController, listUsersController, updateUserController, listUserProfileController } from "../controllers/users.controllers";
 import verifyEmailAvailabilityMiddleware from "../middlewares/verifyEmailAvailability.middleware";
 import verifyAuthTokenMiddleware from "../middlewares/verifyAuthToken.middleware";
-import verifyAdminMiddleware from "../middlewares/verifyAdmin.middleware";
+import verifyAdminMiddleware from "../middlewares/verifyGetAdm.middleware";
 
 const router = Router();
 

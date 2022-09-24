@@ -9,11 +9,8 @@ const verifyAuthTokenMiddleware = (req, res, next) => {
 
     jwt.verify(token, '' + process.env.SECRET_KEY, (error, decoded) => {
         if(error) return res.status(401).json({message: 'Invalid Token.'});
-        req.user = {
-            uuid: decoded.sub,
-            email: decoded.email,
-            isAdm: decoded.isAdm, 
-        }
+
+        req.decoded = decoded
         next();
     });
 };
