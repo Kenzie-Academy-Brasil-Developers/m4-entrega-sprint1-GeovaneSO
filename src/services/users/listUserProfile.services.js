@@ -1,8 +1,8 @@
 import users from '../../database';
 
-const listUserProfileService = (uuid) => {
-    if(uuid){
-        const userProfile = users.filter((user) => user.uuid === uuid);
+const listUserProfileService = (id) => {
+    if(id){
+        const userProfile = users.filter((user) => user.uuid === id);
         const {name, uuid, isAdm, createdOn, updatedOn, email} = userProfile[0]
 
         return {

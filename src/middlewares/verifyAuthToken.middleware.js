@@ -12,9 +12,8 @@ const verifyAuthTokenMiddleware = (req, res, next) => {
         
         req.user = decoded
         req.user.token = token
-        
+
         next();
     });
 };
-
 export default verifyAuthTokenMiddleware;
