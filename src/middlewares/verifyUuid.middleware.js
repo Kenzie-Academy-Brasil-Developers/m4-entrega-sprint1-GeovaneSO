@@ -5,8 +5,8 @@ const verifyUuidMiddleware = (req, res, next) => {
 
     const id = users.findIndex((user) => user.uuid === uuid);
 
-    if(id === -1) return res.status(401).json({message: "Unauthorized"});
+    if(id === -1) return res.status(401).json({message: 'Unauthorized'});
     
     next();
-}
+};
 export default verifyUuidMiddleware;
