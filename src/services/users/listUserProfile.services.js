@@ -3,7 +3,7 @@ import users from '../../database';
 const listUserProfileService = (id) => {
     if(id){
         const userProfile = users.filter((user) => user.uuid === id);
-        const {name, uuid, isAdm, createdOn, updatedOn, email} = userProfile[0]
+        const {name, uuid, isAdm, createdOn, updatedOn, email} = userProfile[0];
 
         return {
             name: name, 
@@ -15,6 +15,5 @@ const listUserProfileService = (id) => {
         }
     }
     throw new Error('User not found');
-}
-
+};
 export default listUserProfileService;

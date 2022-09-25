@@ -1,6 +1,5 @@
-import { Router } from "express";
-import createSessionController from "../controllers/sessions.controllers";
-import verifyAuthTokenMiddleware from "../middlewares/verifyAuthToken.middleware";
+import { Router } from 'express';
+import createSessionController from '../controllers/sessions.controllers';
 
 const loginRoutes = Router();
 

@@ -2,11 +2,13 @@ import users from '../database';
 
 const verifyAdminMiddleware = (req, res, next) => {
     const isAdm = req.user.isAdm;
-    
-    const userAdm = users.find((user) => user.isAdm === isAdm);
+    let userAdm = {}
 
-    if(!userAdm) return res.status(401).json({message: "Unauthorized"});
-   
-    next();
-}
+    if(isAdm === true){
+       userAdm = users.find((user) => user.isAdm === isAdm);
+       next();
+    }
+
+    return res.status(401).json({message: 'Unauthorized'});
+};
 export default verifyAdminMiddleware;
