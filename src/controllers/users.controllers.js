@@ -18,10 +18,10 @@ const createUserController = async (req, res) => {
 
 const updateUserController = (req, res) => {
     try {
-        const uuid = req.user.sub;
+        const uuid = req.params.uuid;
         const isAdm = req.user.isAdm;
         const user = req.body;
-        
+
         const updateUser = updateUserService(uuid, isAdm, user);
 
         return res.json(updateUser);
