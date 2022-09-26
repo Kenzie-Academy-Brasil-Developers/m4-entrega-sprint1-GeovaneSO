@@ -12,7 +12,7 @@ const createUserService = async (user) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // if(isAdm){
+    if(isAdm){
 
         const newUserAdm = {
             uuid: uuidv4(),
@@ -37,28 +37,31 @@ const createUserService = async (user) => {
             updatedOn: serializedUser.updatedOn
         };
 
-    // } else {
+    } else {
         
-    //     const newUserNotAdm = {
-    //         uuid: uuidv4(),
-    //         name,
-    //         email,
-    //         password: hashedPassword,
-    //         isAdm,
-    //         createdOn: new Date(),
-    //         updatedOn: new Date()
-    //     } 
-    //     users.push(serializedUser);
+        const newUserNotAdm = {
+            uuid: uuidv4(),
+            name,
+            email,
+            password: hashedPassword,
+            isAdm,
+            createdOn: new Date(),
+            updatedOn: new Date()
+        } 
+        serializedUser.createdOn = new Date();
+        serializedUser.updatedOn = new Date();
 
-    //     return {
-    //         uuid: serializedUser.uuid, 
-    //         name: serializedUser.name, 
-    //         email: serializedUser.email, 
-    //         isAdm: serializedUser.isAdm,
-    //         createdOn: serializedUser.createdOn,
-    //         updatedOn: serializedUser.updatedOn
-    //     };
-    // }
+        users.push(serializedUser);
+
+        return {
+            uuid: serializedUser.uuid, 
+            name: serializedUser.name, 
+            email: serializedUser.email,
+            isAdm: serializedUser.isAdm,
+            createdOn: serializedUser.createdOn,
+            updatedOn: serializedUser.updatedOn
+        };
+    }
 }
 
 export default createUserService;
