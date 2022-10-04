@@ -4,7 +4,7 @@ import users from '../../database';
 const updateUserService = (id,  isAdm, user) => {
     const {email, name} = user;
 
-    if(isAdm ){
+    // if(isAdm ){
 
             const userAdm = users.find((user) => user.uuid === id);
     
@@ -35,7 +35,7 @@ const updateUserService = (id,  isAdm, user) => {
                         updatedOn: new Date()
                     };
 
-    } else {
+    // } else {
 
         const userNotAdm = users.find((user) => user.uuid === id);
         
@@ -66,6 +66,6 @@ const updateUserService = (id,  isAdm, user) => {
             updatedOn: new Date()
         };
 
-    };
+    // };
 };
 export default updateUserService;

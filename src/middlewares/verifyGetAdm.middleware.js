@@ -5,10 +5,8 @@ const verifyAdminMiddleware = (req, res, next) => {
     const id = req.params.uuid;
     const uuidFromToken = req.user.sub;
     const userAdmIndex = users.findIndex(user => user.uuid == id);
-    // let userAdm = {}
 
     if(isAdm === true){
-    //    userAdm = users.find((user) => user.isAdm === isAdm);
        next();
     }
     if(id === uuidFromToken && userAdmIndex !== -1){
